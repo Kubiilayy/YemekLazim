@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bitirme Projesi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        /* Genel font ve renk düzenlemeleri */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Sayfa arka plan rengi */
+        }
+
+        /* Üst kısım için stil düzenlemeleri */
+        .header {
+            display: flex;
+            justify-content: center; /* Ortala */
+            align-items: center; /* Dikey ortalama */
+            padding: 1rem;
+            margin-bottom: 20px; /* İçerikten mesafe */
+        }
+
+            /* Başlık ve butonlar için stil */
+            .header h1 {
+                margin-right: 2rem; /* Giriş alanından mesafe */
+                font-size: 1.5rem; /* Başlık boyutu */
+            }
+
+        /* Butonlar için stil */
+        .btn-custom {
+            margin: 0 0.5rem; /* Yan yana durmaları için mesafe */
+        }
+
+        /* Footer stil düzenlemeleri */
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 1.5rem 0;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            footer p {
+                font-size: 0.95rem;
+                margin: 0;
+            }
+
+        /* Ana içerik için kutu gölgesi ve kenar boşlukları */
+        main {
+            background-color: #ffffff;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <a class="btn btn-primary btn-custom" asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <span class="btn btn-secondary btn-custom">Hello @UserManager.GetUserName(User)!</span>
+                <form id="logoutForm" class="d-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button id="logout" type="submit" class="btn btn-danger btn-custom">Çıkış Yap</button>
+                </form>
+            }
+            else
+            {
+                <a class="btn btn-secondary btn-custom" asp-area="Identity" asp-page="/Account/Register">Üye Ol</a>
+                <a class="btn btn-secondary btn-custom" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a>
+            }
+        </div>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+@* 
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 - Bitirme Projesi</p>
+        </div>
+    </footer> *@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

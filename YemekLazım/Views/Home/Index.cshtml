@@ -1,0 +1,160 @@
+﻿@{
+    Layout = "~/Views/Shared/_HomeIndexLayout.cshtml"; // Tam yol
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coffo</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <link rel="icon" href="~/images/fevicon.png" type="image/gif" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css">
+
+    <style>
+        /* Genel arka plan resmi ayarları */
+        body {
+            background-image: url('/images/arkaplan7.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Orta içeriğin düzeni ve stil ayarları */
+        .content-container {
+            background-color: #ffffff; /* İçeriğin arka planını beyaz yapar */
+            max-width: 1200px; /* İçeriğin maksimum genişliğini sınırlandırır */
+            margin: 30px auto; /* Ortalar ve üstten/alta boşluk bırakır */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge verir */
+            border-radius: 8px; /* Kenarları yuvarlatır */
+        }
+
+        /* İçerikte kullanılan resimler */
+        .fixed-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Blog kutuları ve içerik yazıları */
+        .blog_box {
+            margin-bottom: 20px;
+        }
+
+        .lorem_text {
+            height: 50px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+        .read_btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+            .read_btn a {
+                display: block;
+                width: 100%;
+                padding: 10px 20px;
+                text-align: center;
+                background-color: #007bff;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                font-weight: bold;
+            }
+
+                .read_btn a:hover {
+                    background-color: #0056b3;
+                }
+
+        .equal-height {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- İçerik konteyneri başlangıcı -->
+    <div class="content-container">
+        <!-- About Section -->
+        <div class="about_section layout_padding">
+            <div class="container">
+                <div class="about_section_2">
+                    <div class="row">
+                        <div class="col-md-6 about_taital_box">
+                            <h1 class="about_taital">YemekLazım</h1>
+                            <h1 class="about_taital_1">Hoşgeldin</h1>
+                            <p class="about_text">
+                                Bu web sitesi, kullanıcıların sahip olduğu malzemelerle kolayca yemek tarifleri bulmalarına yardımcı olmak amacıyla tasarlanmıştır. Kullanıcılar, evdeki malzemeleri girerek, bu malzemeleri kullanarak yapabilecekleri çeşitli tariflere ulaşabilirler. Ayrıca, klasik yemek tarifleri de sunarak mutfaktaki yaratıcılığınızı artırmayı hedefliyoruz. Hızlı ve pratik tarifler ile yemek yapma deneyiminizi keyifli hale getirmek için buradayız. İster acemi bir aşçı olun, ister deneyimli bir mutfak şefi, herkes için uygun tarifler bulabilirsiniz.
+
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="image_iman"><img src="~/images/arkaplan8.jpg" class="fixed-image"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="blog_section layout_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="about_taital">Yapabileceklerin</h1>
+                    </div>
+                </div>
+                <div class="blog_section_2">
+                    <div class="row">
+                        <div class="col-md-6 equal-height">
+                            <div class="blog_box">
+                                <div class="blog_img"><img src="~/images/arkaplan5.jpeg" class="fixed-image"></div>
+                                <h4 class="prep_text">Yemek Tarifi Listesi</h4>
+                                <p class="lorem_text">İstediğiniz Yemek Tariflerine Burdan Ulaşabilirsiniz</p>
+                            </div>
+                            <div class="read_btn"><a asp-controller="YemekTarif" asp-action="index">Tarif Listesi</a></div>
+                        </div>
+                        <div class="col-md-6 equal-height">
+                            <div class="blog_box">
+                                <div class="blog_img"><img src="~/images/arkaplan4.jpeg" class="fixed-image"></div>
+                                <h4 class="prep_text">Yemek Önerileri</h4>
+                                <p class="lorem_text">Evinizde bulunan malzemeleri listeden seçerek o malzemelerle yapabileceğiniz yemek öneri ve tariflerine burdan ulaşabilirsiniz</p>
+                            </div>
+                            <div class="read_btn"><a asp-controller="Malzeme" asp-action="index">Tarif Öner</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- İçerik konteyneri bitişi -->
+    <!-- Javascript files -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery-3.0.0.min.js"></script>
+    <script src="~/js/plugin.js"></script>
+    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/js/custom.js"></script>
+</body>
+</html>

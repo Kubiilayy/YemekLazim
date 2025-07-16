@@ -1,0 +1,75 @@
+﻿@model IEnumerable<(BitirmeProjesiDeneme2.Models.Tarif tarif, List<string> eksikler)>
+
+@if (Model.Any())
+{
+
+    int uygunSayac = 1;
+
+
+    int eksikSayac = 1;
+
+
+    var tamOlanlar = Model.Where(t => t.eksikler == null || !t.eksikler.Any()).ToList();
+
+
+    var eksikOlanlar = Model.Where(t => t.eksikler != null && t.eksikler.Any())
+                            .OrderBy(t => t.eksikler.Count)
+                            .ToList();
+
+    if (tamOlanlar.Any())
+    {
+        <h3 style="color: #5cb85c;">Yapılmaya Uygun Tarifler</h3> 
+        foreach (var (tarif, eksikler) in tamOlanlar)
+        {
+            <div class="tarif-container" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                <h3>@uygunSayac. @tarif.Ad</h3> 
+                <p><strong>Açıklama:</strong> @tarif.Açıklama</p>
+                <p style="color: #5cb85c;">Bu tarifi yapabilirsiniz!</p>
+            </div>
+            uygunSayac++;
+            
+        }
+    }
+
+
+    if (eksikOlanlar.Any())
+    {
+        <h3 style="color: #d9534f;">Eksik Malzemeleri Tamamlayarak Yapabileceğiniz Tarifler</h3>
+        foreach (var (tarif, eksikler) in eksikOlanlar)
+        {
+            <div class="tarif-container" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                <h3>@eksikSayac. @tarif.Ad</h3> 
+                <p><strong>Açıklama:</strong> @tarif.Açıklama</p>
+
+
+                <h4 style="color: #d9534f;">Eksik Malzemeler (@eksikler.Count):</h4>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 5px; overflow: hidden;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Malzeme Adı</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Sipariş Et</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var eksik in eksikler)
+                        {
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px;">@eksik</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">
+                                    <a href="https://example.com/siparis?malzeme=@eksik" class="btn btn-primary" style="text-decoration: none; padding: 5px 10px; background-color: #007bff; color: white; border-radius: 5px;">Sipariş Et</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <p style="color: #555;">Bu malzemeleri alırsanız, tarifi yapabilirsiniz!</p>
+            </div>
+            eksikSayac++;
+
+        }
+    }
+}
+else
+{
+    <p style="text-align: center; color: #d9534f;">Seçtiğiniz malzemelerle uygun tarif bulunamadı.</p>
+}

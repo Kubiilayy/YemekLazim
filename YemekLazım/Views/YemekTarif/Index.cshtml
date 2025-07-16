@@ -1,0 +1,272 @@
+﻿@model IEnumerable<Tarif>
+
+@{
+    Layout = null; // Tam yol
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarif Listesi</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/images/arkaplan7.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(139, 0, 0, 0.8);
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-box, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            padding: 8px 15px;
+            background-color: rgba(102, 0, 0, 0.8);
+            border-radius: 12px;
+            animation: slideInLeft 0.5s ease-in-out;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center; /* Ortalanmasını sağlar */
+            align-items: center;
+            gap: 30px; /* Butonlar arası boşluk */
+            flex-grow: 1;
+            margin: 0 auto; /* Sayfa ortasına hizalar */
+        }
+
+        main h1 {
+            text-align: center; /* Üst başlığı ortalar */
+            margin-bottom: 20px; /* Başlık ile içerik arası boşluk */
+            font-size: 2em; /* Yazı boyutu */
+            color: rgba(139, 0, 0, 0.9); /* Kırmızı tonlama */
+        }
+
+
+            .nav-center a, .nav-right a {
+                text-decoration: none;
+                color: #fff;
+                padding: 8px 15px;
+                background-color: rgba(102, 0, 0, 0.8);
+                border-radius: 12px;
+                transition: color 0.3s, background-color 0.3s, transform 0.3s;
+            }
+
+        .nav-right a {
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+
+            .nav-center a:hover, .nav-right a:hover {
+                color: #FFD700;
+                background-color: rgba(178, 34, 34, 0.9);
+                transform: scale(1.05);
+            }
+
+        main {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            max-width: 1400px;
+            min-height: 700px;
+            margin: 60px auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 70%;
+            padding: 15px;
+            border-radius: 10px 0 0 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .search-button {
+            padding: 15px;
+            background-color: rgba(139, 0, 0, 0.9);
+            color: white;
+            border: none;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            .search-button:hover {
+                background-color: #FFD700;
+                transform: scale(1.05);
+            }
+
+        .recipe-list {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+            .recipe-list li {
+                background-color: #f0f0f0;
+                border-radius: 12px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                flex: 1 1 calc(45% - 20px);
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                gap: 5px;
+                position: relative;
+            }
+
+        .image-box {
+            flex: 0 0 120px;
+            height: 120px;
+        }
+
+            .image-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+
+        .button {
+            background-color: rgba(139, 0, 0, 0.9);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+            .button:hover {
+                background-color: #FFD700;
+                transform: scale(1.05);
+            }
+
+            .button::after {
+                content: ' →';
+            }
+
+        .heart-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+            .heart-button img {
+                width: 24px;
+                height: 24px;
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-box">
+            <div class="logo">YemekLazım</div>
+        </div>
+        <nav class="nav-center">
+            <a asp-controller="Home" asp-action="index">Anasayfa</a>
+            <a asp-controller="yemektarif" asp-action="index">Tarif Listesi</a>
+            <a asp-controller="#" asp-action="#">Beğendiklerim</a>
+        </nav>
+        <div class="nav-right">
+            <a href="#" class="cart">Sepet</a>
+            <a href="#" class="login">Kullanıcı Girişi</a>
+        </div>
+    </header>
+    <main>
+        <form class="search-box">
+            <input type="text" class="search-input" id="searchInput" name="search" placeholder="Tarif ara..." />
+            <button type="submit" class="search-button">Ara</button>
+        </form>
+
+        <ul class="recipe-list" id="recipeList">
+            @foreach (var tarif in Model)
+            {
+                <li>
+                    <div class="image-box">
+                        <img src="@Url.Content(tarif.ResimUrl)" alt="@tarif.Ad" />
+                    </div>
+                    <span style="font-weight: bold;">@tarif.Ad</span><span style="font-weight: bold;"> Tarifi</span>
+                    <button class="heart-button" onclick="toggleHeart(this, '@tarif.Id')">
+                        <img src="~/images/heart.png" alt="Kalp" class="heart-icon" />
+                    </button>
+                    <a asp-controller="YemekTarif" asp-action="Details" asp-route-id="@tarif.Id" class="button">Detay</a>
+                </li>
+            }
+        </ul>
+    </main>
+    <script>
+        function toggleHeart(button, tarifId) {
+            var heartIcon = $(button).find('.heart-icon');
+            var isFilled = heartIcon.attr('src') === '/images/heart_filled.png';
+
+            if (!isFilled) {
+                heartIcon.attr('src', '/images/heart_filled.png'); // Kırmızı kalp
+            } else {
+                heartIcon.attr('src', '/images/heart.png'); // Boş kalp
+            }
+
+            // Burada isteğe bağlı olarak favorilere eklemek için AJAX çağrısı yapabilirsiniz.
+            $.ajax({
+                url: '@Url.Action("AddToFavorites", "YemekTarif")',
+                type: 'POST',
+                data: { id: tarifId },
+                success: function (response) {
+                    console.log(response); // Başarı durumunda yapılacak işlemler
+                },
+                error: function () {
+                    alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#searchInput').on('input', function () {
+                var value = $(this).val().toLowerCase();
+                $('#recipeList li').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+﻿@model BitirmeProjesiDeneme2.Models.Tarif
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Ad Detayı</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/images/arkaplan7.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(139, 0, 0, 0.8);
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-box, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            padding: 8px 15px;
+            background-color: rgba(102, 0, 0, 0.8);
+            border-radius: 12px;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+
+            .nav-center a, .nav-right a {
+                text-decoration: none;
+                color: #fff;
+                padding: 8px 15px;
+                background-color: rgba(102, 0, 0, 0.8);
+                border-radius: 12px;
+                transition: color 0.3s, background-color 0.3s, transform 0.3s;
+            }
+
+                .nav-center a:hover, .nav-right a:hover {
+                    color: #FFD700;
+                    background-color: rgba(178, 34, 34, 0.9);
+                    transform: scale(1.05);
+                }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 1em;
+            padding: 8px 15px;
+            background-color: rgba(102, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .back-button a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .back-button:hover {
+                background-color: rgba(178, 34, 34, 0.9);
+                color: #FFD700;
+            }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #8B0000;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .col-md-4, .col-md-8 {
+            flex-grow: 1;
+        }
+
+        .col-md-4 {
+            flex: 1 1 40%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .col-md-8 {
+            flex: 1 1 55%;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: auto;
+            max-height: 300px; /* Maksimum yükseklik */
+            object-fit: cover; /* Resmi çerçeveye sığdıracak şekilde kesme */
+            border: 5px solid #8B0000; /* Çerçeve rengi ve kalınlığı */
+            border-radius: 10px; /* Çerçevenin köşe yuvarlama */
+            overflow: hidden; /* Resmin dışarı taşmaması için */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Çerçeve etrafında hafif gölge */
+        }
+
+
+        .ingredient-list {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h4 {
+            color: #555;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: normal; /* Bu satır eklendi */
+            word-break: break-word; /* Bu satır eklendi */
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+            color: #444;
+            text-align: left;
+        }
+
+        .ingredient-item {
+            margin: 5px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-box">
+            <div class="logo">YemekLazım</div>
+        </div>
+        <nav class="nav-center">
+            <a asp-controller="Home" asp-action="index">Anasayfa</a>
+            <a asp-controller="yemektarif" asp-action="index">Tarif Listesi</a>
+            <a asp-controller="#" asp-action="#">Beğendiklerim</a>
+        </nav>
+        <div class="nav-right">
+            <a href="#" class="cart">Sepet</a>
+            <a href="#" class="login">Kullanıcı Girişi</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>@Model.Ad</h2>
+
+        <!-- Geri Dön Butonu -->
+        <div class="back-button">
+            <a asp-controller="yemektarif" asp-action="index">
+                &larr; Geri Dön
+            </a>
+        </div>
+
+        <div class="row">
+            <!-- Sol Kısım: Yemeğin Görseli -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="@Url.Content(Model.ResimUrl)" class="card-img-top img-fluid" alt="@Model.Ad Görseli">
+                </div>
+            </div>
+
+            <!-- Sağ Kısım: Tarif Bilgileri -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <br />
+                        <h4>Kullanılan Malzemeler</h4>
+                        <div class="ingredient-list">
+                            <ul>
+                                @foreach (var tarifMalzeme in Model.TarifMalzemeler)
+                                {
+                                    <li class="ingredient-item">@tarifMalzeme.Malzeme.Ad</li>
+                                }
+                            </ul>
+                        </div>
+                        <h4>Tarif Açıklaması</h4>
+                        <p>@Model.Açıklama</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

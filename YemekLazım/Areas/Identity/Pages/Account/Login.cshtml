@@ -1,0 +1,158 @@
+﻿@page
+@model LoginModel
+<style>
+    /* Mevcut stilinizin üzerine eklemeler yapabilirsiniz */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: url('/images/arkaplan7.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: rgba(139, 0, 0, 0.8);
+        color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-box, .nav-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #fff;
+        padding: 8px 15px;
+        background-color: rgba(102, 0, 0, 0.8);
+        border-radius: 12px;
+        animation: slideInLeft 0.5s ease-in-out;
+    }
+
+    .nav-center {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-grow: 1;
+        margin-right: 20px;
+    }
+
+        .nav-center a, .nav-right a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 15px;
+            background-color: rgba(102, 0, 0, 0.8);
+            border-radius: 12px;
+            transition: color 0.3s, background-color 0.3s, transform 0.3s;
+        }
+
+    .nav-right a {
+        margin: 0 10px;
+        font-size: 1.1em;
+    }
+
+        .nav-center a:hover, .nav-right a:hover {
+            color: #FFD700;
+            background-color: rgba(178, 34, 34, 0.9);
+            transform: scale(1.05);
+        }
+
+    main {
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        max-width: 1400px;
+        min-height: 700px;
+        margin: 60px auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-floating {
+        margin-bottom: 20px;
+    }
+
+        .form-floating input,
+        .form-floating label {
+            width: 100%;
+        }
+
+    #login-submit {
+        width: 100%;
+        padding: 15px;
+        background-color: rgba(139, 0, 0, 0.9);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        #login-submit:hover {
+            background-color: #FFD700;
+            transform: scale(1.05);
+        }
+
+    .form-container {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 40px 0;
+    }
+
+        .form-container a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+</style>
+@{
+
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h2>Giriş Yap</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Şifre</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Giriş Yap</button>
+                </div>
+                <br />
+                <div>
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Şifrenizi mi unuttunuz?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Kayıt Ol</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@* @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@

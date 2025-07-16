@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Admin Paneli";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Hoş Geldiniz, Admin!</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Admin Paneli</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Tarifler Yönetimi</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="/AdminTarif/Index">Tarifleri Görüntüle</a>
+                    <div class="small text-white"><i class="fas fa-receipt"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Malzeme Yönetimi</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="/AdminMalzeme/Index">Malzemeleri Görüntüle</a>
+                    <div class="small text-white"><i class="fas fa-carrot"></i></div>
+                </div>
+            </div>
+        </div>
+        @* <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Raporlar</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">Raporları Görüntüle</a>
+                    <div class="small text-white"><i class="fas fa-chart-line"></i></div>
+                </div>
+            </div>
+        </div> *@
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">Ayarlar</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">Ayarları Yönet</a>
+                    <div class="small text-white"><i class="fas fa-cog"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        Bu panel üzerinden tarifleri ve malzemeleri yönetebilir, yeni tarifler ekleyebilir veya mevcut tarifleri güncelleyebilirsiniz.
+    </p>
+    <p>
+        Yapmanız gereken işlemleri kolayca gerçekleştirmek için yukarıdaki bağlantıları kullanabilirsiniz.
+    </p>
+</div>
+

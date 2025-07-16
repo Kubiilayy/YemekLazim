@@ -1,0 +1,225 @@
+﻿@model IEnumerable<BitirmeProjesiDeneme2.Models.Malzeme>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: url('/images/arkaplan7.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: rgba(139, 0, 0, 0.8);
+        color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-box, .nav-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #fff;
+        padding: 8px 15px;
+        background-color: rgba(102, 0, 0, 0.8);
+        border-radius: 12px;
+        animation: slideInLeft 0.5s ease-in-out;
+    }
+
+    .nav-center {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-grow: 1;
+        margin-right: 20px;
+    }
+
+        .nav-center a, .nav-right a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 15px;
+            background-color: rgba(102, 0, 0, 0.8);
+            border-radius: 12px;
+            transition: color 0.3s, background-color 0.3s, transform 0.3s;
+        }
+
+    .nav-right a {
+        margin: 0 10px;
+        font-size: 1.1em;
+    }
+
+        .nav-center a:hover, .nav-right a:hover {
+            color: #FFD700;
+            background-color: rgba(178, 34, 34, 0.9);
+            transform: scale(1.05);
+        }
+
+    main {
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        max-width: 1400px;
+        min-height: 700px;
+        margin: 60px auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-box {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .search-input {
+        width: 70%;
+        padding: 15px;
+        border-radius: 10px 0 0 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    .search-button {
+        padding: 15px;
+        background-color: rgba(139, 0, 0, 0.9);
+        color: white;
+        border: none;
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .search-button:hover {
+            background-color: #FFD700;
+            transform: scale(1.05);
+        }
+
+    .recipe-list {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: center;
+    }
+
+        .recipe-list li {
+            background-color: #f0f0f0;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(45% - 20px);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            gap: 5px;
+            position: relative;
+        }
+
+    .image-box {
+        flex: 0 0 120px;
+        height: 120px;
+    }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+    .button {
+        background-color: rgba(139, 0, 0, 0.9);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+        .button:hover {
+            background-color: #FFD700;
+            transform: scale(1.05);
+        }
+
+        .button::after {
+            content: ' →';
+        }
+
+    .heart-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+        .heart-button img {
+            width: 24px;
+            height: 24px;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Malzeme Seç</h2>
+
+    <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Malzeme Ara..." onkeyup="filterIngredients()" style="border-radius: 20px;">
+    </div>
+
+    <form asp-action="FindRecipes" method="post">
+        <div class="row" id="ingredientsList">
+            @foreach (var malzeme in Model)
+            {
+                <div class="col-md-4 mb-3 ingredient-item">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="selectedIngredients" value="@malzeme.Id" id="malzeme-@malzeme.Id">
+                                <label class="form-check-label" for="malzeme-@malzeme.Id">
+                                    @malzeme.Ad
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 20px;">Tarifleri Göster</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function filterIngredients() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const ingredients = document.getElementsByClassName('ingredient-item');
+
+        for (let i = 0; i < ingredients.length; i++) {
+            const label = ingredients[i].getElementsByTagName('label')[0];
+            if (label) {
+                const txtValue = label.textContent || label.innerText;
+                ingredients[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+            }
+        }
+    }
+</script>
+
+

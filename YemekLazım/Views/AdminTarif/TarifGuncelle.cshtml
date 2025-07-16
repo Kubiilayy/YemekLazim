@@ -1,0 +1,37 @@
+﻿@model BitirmeProjesiDeneme2.Models.Tarif
+@{
+    ViewData["Title"] = "TarifGuncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Tarif Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("TarifGuncelle", "AdminTarif", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Id)
+        @Html.LabelFor(x => x.Ad)
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Açıklama)
+        @Html.TextBoxFor(x => x.Açıklama, new { @class = "form-control" })
+        <br />
+
+        <!-- Malzeme arama kutusu ve liste -->
+        <h3>Tarif İçin Gerekli Malzemeler:</h3>
+        <input type="text" id="malzemeSearch" placeholder="Malzeme ara..." class="form-control mb-2" />
+        <div id="malzemeList">
+            @foreach (var malzeme in ViewBag.Malzemeler)
+            {
+                var isChecked = ViewBag.SelectedMalzemeler.Contains(malzeme.Id);
+                <div>
+                    <input type="checkbox" name="selectedMalzemeIds" value="@malzeme.Id" @(isChecked ? "checked" : "") />
+                    <label>@malzeme.Ad</label>
+                </div>
+            }
+        </div>
+        <br />
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

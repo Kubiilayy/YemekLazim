@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\omer\\Masa\u00FCst\u00FC\\YemekLazim-main\\BitirmeProjesiDeneme2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{33A18AC8-3675-4DE3-90FF-5350A1001012}|BitirmeProjesiDeneme2.csproj|c:\\users\\omer\\masa\u00FCst\u00FC\\yemeklazim-main\\bitirmeprojesideneme2\\views\\yemektarif\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{33A18AC8-3675-4DE3-90FF-5350A1001012}|BitirmeProjesiDeneme2.csproj|solutionrelative:views\\yemektarif\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33A18AC8-3675-4DE3-90FF-5350A1001012}|BitirmeProjesiDeneme2.csproj|c:\\users\\omer\\masa\u00FCst\u00FC\\yemeklazim-main\\bitirmeprojesideneme2\\views\\yemektarif\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{33A18AC8-3675-4DE3-90FF-5350A1001012}|BitirmeProjesiDeneme2.csproj|solutionrelative:views\\yemektarif\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\omer\\Masa\u00FCst\u00FC\\YemekLazim-main\\BitirmeProjesiDeneme2\\Views\\YemekTarif\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\YemekTarif\\Details.cshtml",
+              "ToolTip": "C:\\Users\\omer\\Masa\u00FCst\u00FC\\YemekLazim-main\\BitirmeProjesiDeneme2\\Views\\YemekTarif\\Details.cshtml",
+              "RelativeToolTip": "Views\\YemekTarif\\Details.cshtml",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAAANsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-14T12:53:04.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\omer\\Masa\u00FCst\u00FC\\YemekLazim-main\\BitirmeProjesiDeneme2\\Views\\YemekTarif\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\YemekTarif\\Index.cshtml",
+              "ToolTip": "C:\\Users\\omer\\Masa\u00FCst\u00FC\\YemekLazim-main\\BitirmeProjesiDeneme2\\Views\\YemekTarif\\Index.cshtml",
+              "RelativeToolTip": "Views\\YemekTarif\\Index.cshtml",
+              "ViewState": "AgIAALoAAAAAAAAAAAAAANQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-14T12:52:57.242Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

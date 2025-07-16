@@ -1,0 +1,27 @@
+﻿@using BitirmeProjesiDeneme2.Models
+@model List<Malzeme>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>MALZEME</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Ad</td>
+            <td><a href="/AdminMalzeme/MalzemeSil/@item.Id" class="btn btn-danger">Sil</a></td>
+            <td><a href="/AdminMalzeme/MalzemeGuncelle/@item.Id" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/AdminMalzeme/MalzemeEkle" class="btn btn-info">Yeni Ürün</a>
+

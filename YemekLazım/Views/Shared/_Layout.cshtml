@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bitirme Projesi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/images/arkaplan7.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(139, 0, 0, 0.8);
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-box, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            padding: 8px 15px;
+            background-color: rgba(102, 0, 0, 0.8);
+            border-radius: 12px;
+            animation: slideInLeft 0.5s ease-in-out;
+            text-decoration: none; /* Linki biçimlendirirken alt çizgiyi kaldırdık */
+        }
+
+            .logo span {
+                font-size: 1.2em; /* Ok işaretinin boyutunu büyütmek için */
+                margin-right: 10px; /* Ok işaretini biraz sola kaydırmak için */
+            }
+
+            /* Logo üzerine gelindiğinde renk değişmemesi için */
+            .logo:hover {
+                color: #fff; /* Rengi sabit tutuyoruz */
+                background-color: rgba(102, 0, 0, 0.8); /* Arka planı da sabit tutuyoruz */
+                transform: scale(1.1); /* Yazıyı biraz büyütme efekti */
+            }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+
+            .nav-center a, .nav-right a {
+                text-decoration: none;
+                color: #fff;
+                padding: 8px 15px;
+                background-color: rgba(102, 0, 0, 0.8);
+                border-radius: 12px;
+                transition: color 0.3s, background-color 0.3s, transform 0.3s;
+            }
+
+        .nav-right a {
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+
+            .nav-center a:hover, .nav-right a:hover {
+                color: #FFD700;
+                background-color: rgba(178, 34, 34, 0.9);
+                transform: scale(1.05);
+            }
+
+        main {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            max-width: 1400px;
+            min-height: 700px;
+            margin: 60px auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 1.5rem 0;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            footer p {
+                font-size: 0.95rem;
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-box">
+            <!-- Anasayfa linki ile "YemekLazım" metni ve ok işareti -->
+            <a href="@Url.Action("Index", "Home")" class="logo">
+                YemekLazım <span>&#8592;</span> <!-- Ok işareti sola doğru -->
+            </a>
+        </div>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 - Bitirme Projesi</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
